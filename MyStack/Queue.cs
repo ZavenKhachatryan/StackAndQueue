@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace MyStack
@@ -24,12 +25,22 @@ namespace MyStack
 		}
 		public T Dequeue()
 		{
+			if (_queueList == null)
+			{
+				throw new InvalidOperationException("Queue is empty");
+			}
+
 			T firstItem = _queueList[0];
 			_queueList.RemoveRange(0, 1);
 			return firstItem;
 		}
 		public T Peek()
 		{
+			if (_queueList == null)
+			{
+				throw new InvalidOperationException("Queue is empty");
+			}
+
 			return _queueList[0];
 		}
 

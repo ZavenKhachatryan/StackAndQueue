@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace MyStack
@@ -26,6 +27,11 @@ namespace MyStack
 
 		public T Pop()
 		{
+			if (_stackList == null)
+			{
+				throw new InvalidOperationException("Queue is empty");
+			}
+
 			T lastItem = _stackList[Count - 1];
 			_stackList.RemoveRange(Count - 1, 1);
 			return lastItem;
@@ -33,6 +39,11 @@ namespace MyStack
 
 		public T Peek()
 		{
+			if (_stackList == null)
+			{
+				throw new InvalidOperationException("Queue is empty");
+			}
+
 			return _stackList[Count - 1];
 		}
 
